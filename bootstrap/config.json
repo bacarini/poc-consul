@@ -1,0 +1,19 @@
+{
+    "bootstrap" : true,
+    "server" : true,
+    "datacenter" : "poc-consul",
+    "data_dir" : "/tmp/consul",
+    "ui": true,
+    "encrypt" : "_CONSUL_KEYGEN_",
+    "log_level" : "INFO",
+    "enable_syslog" : true,
+    "start_join" : ["_PRIVATE_IP_AWS_INSTANCE_"],
+    "node_name": "server",
+    "addresses" : {
+        "http": "_PRIVATE_IP_AWS_INSTANCE_"
+    },
+    "advertise_addr" : "_PUBLIC_IP_AWS_INSTANCE_",
+    "ports" : {
+        "http" : 80
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "client_addr": "0.0.0.0",
+    "advertise_addr" : "_PUBLIC_IP_AWS_INSTANCE_",
+    "server" : false,
+    "datacenter" : "poc-consul",
+    "data_dir" : "/tmp/consul",
+    "encrypt" : "_CONSUL_KEYGEN_",
+    "log_level" : "INFO",
+    "enable_syslog" : false,
+    "start_join" : ["_PUBLIC_IP_AWS_INSTANCE_"],
+    "node_name" : "_NODE_NAME_",
+    "enable_script_checks": true,
+    "leave_on_terminate" : true,
+    "service": {
+        "name": "function",
+        "tags": ["web"],
+        "port": 3000,
+        "check": {
+            "args": ["curl", "127.0.0.1"],
+            "interval": "10s"
+        }
+    }
+}

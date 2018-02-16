@@ -1,0 +1,71 @@
+{
+  "name": "name of component",
+  "description": "some description",
+  "initial_step": "false",
+  "max_execution_time": 10000,
+  "supported_trigger_types": [
+    "voice_inbound"
+  ],
+  "properties": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": true,
+    "properties": {
+      "room_id": {
+        "type": "string",
+        "description": "some description"
+      },
+      "phone_number": {
+        "type": "string",
+        "description": "some description"
+      },
+      "blacklist": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "some description"
+        }
+      }
+    },
+    "required": [
+      "room_id",
+      "phone_number",
+      "blacklist"
+    ],
+    "type": "object"
+  },
+  "output": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "enum": [
+      "blacklisted",
+      "not-blacklisted",
+      "error",
+      "room_finished"
+    ]
+  },
+  "data": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "oneOf": [
+      {
+        "properties": {
+
+        }
+      },
+      {
+        "properties": {
+          "error_code": {
+            "type": "string"
+          },
+          "error_message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error_code",
+          "error_message"
+        ]
+      }
+    ]
+  }
+}
